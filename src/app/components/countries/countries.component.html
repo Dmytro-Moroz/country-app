@@ -1,0 +1,31 @@
+<div *ngIf="countries?.length > 0; else noCountries">
+    <ul *ngFor="let country of countries" class="collection">
+        <li class="collection-country">
+            <strong>{{country.title}}</strong> : {{country.description}}
+            <a href="#" class="secondary-content">
+                <i (click)="editCountry($event, country)" class="fa fa-pencil"></i>
+                <i *ngIf="editState && countryToEdit.id == country.id" (click)="clearState()" class="fa fa-compress"></i>
+            </a>
+
+            <div *ngIf="editState && countryToEdit.id == country.id">
+                <form (ngSubmit)="updateCountry(country)">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" placeholder="Add title" [(ngModel)]="country.title" name="title">
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" placeholder="Add description" [(ngModel)]="country.description" name="description">
+                        </div>
+                        <input type="submit" value="Update Country" class="btn">
+                        <button (click)="deleteCountry($event, country)" class="btn red">Delete Country</button>
+                    </div>
+                </form>
+            </div>
+
+        </li>
+    </ul>
+</div>
+
+<ng-template #noCountries>
+    <h3>No Countries to list</h3>
+</ng-template>
