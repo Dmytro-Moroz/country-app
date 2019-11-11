@@ -1,3 +1,5 @@
+Angular+Firebase CRUD application. You can create, update, edit and delete data in this app.
+
 # CountryApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0-next.15.
